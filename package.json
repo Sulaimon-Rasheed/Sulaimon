@@ -1,11 +1,8 @@
 {
-  "name": "sulaimon",
+  "name": "dev.sulaimon",
   "version": "1.0.0",
   "description": "Sulaimon personal Website",
   "main": "app.js",
-  "engines" : {
-    "node" : ">=14.20.1 <17.0.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
