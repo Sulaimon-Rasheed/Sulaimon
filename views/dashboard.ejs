@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../public/web.js" defer></script>
+    <link rel="stylesheet" href="../public/app.css" />
+    <title>dashboard</title>
+  </head>
+  <body>
+    <%- include("partials/headers"); -%>
+
+    <main id="mainContainer">
+      <span id="date"><%=date%></span>
+
+      <%if(user){%>
+      <div id="nameWelcome">
+        <h1>Welcome <span><%=user.admin_name%></span> to the dashboard.</h1>
+        <a href="/article/create" id="createBtn">Create article</a>
+      </div>
+      <ul id="articleRoot">
+        <%articles.forEach((article)=>{%>
+        <li>
+          <div id="eachBlogContainer">
+            <div id="timeAndTitle">
+              <p id="time"><%=article.drafted_timestamp%></p>
+              <a href="/article/selfRead/<%=article._id%>" id="otherInfo">
+                <p id="title"><%=article.title%></p>
+                <p id="describe"><%=article.description%></p>
+                <p id="readingTime">
+                  <b>Reading time:</b> <%=article.reading_time%>
+                </p>
+                <%if(article.state === "draft"){%>
+                <p
+                  style="background-color: brown; color: white"
+                  class="articleState"
+                >
+                  <%=article.state%>
+                </p>
+                <%}else{%>
+                <p
+                  style="background-color: green; color: white"
+                  class="articleState"
+                >
+                  <%=article.state%>
+                </p>
+                <%}%>
+                <p id="readMore">Read article &xrArr;</p>
+              </a>
+            </div>
+
+            <div id="publishBtnContainer">
+              <form action="/article/updateState/<%=article._id%>" method="PUT">
+                <input
+                  id="stateInput"
+                  type="text"
+                  name="state"
+                  value="published"
+                  style="
+                  width: 0;
+                  height: 0;
+                  background-color: inherit;
+                  border: none;
+                "
+                />
+
+                <input
+                  type="date"
+                  value="0"
+                  name="published_timestamp"
+                  style="
+                    width: 0;
+                    height: 0;
+                    background-color: inherit;
+                    border: none;
+                  "
+                />
+                <%if(article.state==="draft"){%>
+                <button
+                  id="state"
+                  type="submit"
+                  formmethod="post"
+                  title="click to publish the blog"
+                >
+                  publish
+                </button>
+                <%}else{%>
+                <span></span>
+                <%}%>
+              </form>
+            </div>
+          </div>
+        </li>
+        <% })%>
+      </ul>
+
+      <% }else{%>
+      <a href="/admin/login">Login</a>
+      <%}%>
+    </main>
+    <%- include("partials/footers"); -%>
+  </body>
+</html>

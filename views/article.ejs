@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../public/web.js" defer></script>
+    <link rel="stylesheet" href="../public/app.css" />
+    <title>Articles | Sulaimon-Rasheed</title>
+  </head>
+  <body>
+   
+    <%- include("partials/headers"); -%>
+    <span id="date"><%=date%></span>
+    <main id="mainContainer">
+      
+      <h1>I have researched to come up with some impactful articles for you.Read and add values</h1>
+      <ul id="articleRoot">
+        <%articles.forEach((article)=>{%>
+        <li>
+          <div id="eachBlogContainer">
+            <div id="timeAndTitle">
+              <p id="time"><b>Published <%=article.published_timestamp%></b></p>
+
+              <a href="/article/publicRead/<%=article._id%>" id="otherInfo" title="Click to read the article">
+                <p id="title"><%=article.title%></p>
+                <p id="describe"><%=article.description%></p>
+                <p id="readingTime">
+                  <b>Reading time:</b> <%=article.reading_time%>
+                </p>
+                <p id="readCount"><b>Read count:</b> <%=article.read_count%></p>
+                <p id="readMore">Read article &xrArr;</p>
+              </a>
+            </div>
+          </div>
+        </li>
+        <% })%>
+      </ul>
+    </main>
+    <%- include("partials/footers"); -%>
+  </body>
+</html>

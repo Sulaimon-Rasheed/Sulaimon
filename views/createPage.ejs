@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../public/web.js" defer></script>
+    <link rel="stylesheet" href="../public/app.css" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script src="../public/web.js"></script>
+    <title>Create article</title>
+  </head>
+  <body>
+<%- include("partials/headers"); -%>
+
+
+<main>
+  <span id="date"><%=date%></span>
+    <%if(user){%>
+        <form action="/article/send" method="POST">
+          <label for="title" class="createLabel">Title: <input type="text" name="title" id="searchInput"/></label
+          ><br /><br />
+          <label for="description" class="createLabel"
+            >Description: <input type="text" name="description" id="searchInput"/></label
+          ><br /><br />
+          <label for="body" class="createLabel">Body: </label><br />
+          <textarea  type="text", name="content" id="editor"></textarea>
+          <br /><br />
+          <button type="submit" id="anchor">Send</button>
+        </form>
+        <a href="/admin/dashboard">back to dashboard</a>
+    <%}else{%>
+        <a href="/admin/login"></a>
+    <%}%>
+
+</main>
+  <%- include("partials/footers"); -%>
+
+  <script>
+ClassicEditor
+ .create( document.querySelector( '#editor' ) )
+ .catch( error => {
+   console.error( error );
+ } );
+  </script>
+</body>

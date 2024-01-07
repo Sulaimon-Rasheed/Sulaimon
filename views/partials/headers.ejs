@@ -1,0 +1,14 @@
+
+    <nav>
+      <div id="logoWrapper">
+        <a href="/<%=home%>">
+          <img src="../public/img_Sulaimon3.jpg" alt="profile-logo" id="logo">
+        </a>
+        <figcaption><%=name%></figcaption>
+      </div> 
+      <ul id="ul1">
+        <% for(let i = 0 ; i<nav.length; i++){%>
+        <li><a href="/<%= nav[i]%>" id="hAnchor"><%= nav[i]%></a></li>
+        <%}%>
+      </ul>
+    </nav>

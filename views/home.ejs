@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../public/web.js" defer></script>
+    <link rel="stylesheet" href="../public/app.css" />
+    <title>Software developer, Product Manager, Teacher</title>
+  </head>
+  <body>
+<%- include("partials/headers"); -%>
+<main>
+    <div id="intro">
+    <h1><span id="title1"> Software Developer</span>,<span id="title2"> Project<br>Manager</span> and
+      <span id="title3"> Teacher </span></h1>
+    <P>I am <span id="name">Sulaimon</span>, a software developer living in Lagos, Nigeria. I profer solutions to business problems and 
+      improve performances with the use of world class business logic to build robust
+       <strong>backend softwares</strong> that are problem solving oriented. <br> My personal values are humility, 
+       kindness, empathy, accountabilty, coordinating and teaching.
+    </P>
+  </div>
+  <div id="social">
+    <a href="https://github.com/sulaimon-Rasheed">
+      <img src="../public/github-original.svg" alt="github-icon" id="gitImg"></a>
+    <a href="https://twitter.com/Sulaimon_Sure">
+      <img src="../public/i.fi-social-twitter.svg" alt="twitter-icon" class="socLog"></a>
+    <a href="https://www.linkedin.com/in/sulaimon-rasheed-3a594426b/">
+      <img src="../public/i.fi-social-linkedin.svg" alt="linkedin-icon" class="socLog"></a>
+  </div>
+   <ul id="ul2">
+    <%for(let i=0; i<image.length; i++){%>
+    <li><img src="../public/<%=image[i]%>" alt="sulaimon's image" class="imageShow"></li>
+    <%}%>
+  </ul>
+
+</main>
+  <%- include("partials/footers"); -%>
+</body>
+ 

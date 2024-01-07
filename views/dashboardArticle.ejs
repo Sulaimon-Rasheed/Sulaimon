@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script src="../public/web.js" defer></script>
+    <link rel="stylesheet" href="../public/app.css" />
+    <title>Article management</title>
+  </head>
+  <body>
+<%- include("partials/headers"); -%>
+
+<main>
+  <a href="/admin/dashboard" id="dashboardBtn">&xlArr; back to dashboard</a>
+    <%if(user){%>
+        <h1 id="ownerTitle"><%=article.title%></h1>
+        <div id="content"><%- article.body%></div>
+        
+      <form action="/article/updateBody/<%=article._id%>" method="PUT" id="updateForm">
+        <label for="body"
+          ><h2 id="updateTitle">Make update to your article body(Draft or Published) here:</h2></label>
+          <textarea name="content" id="editor"></textarea>
+          <script>
+            ClassicEditor
+             .create( document.querySelector( '#editor' ) )
+             .catch( error => {
+               console.error( error );
+             } );
+              </script>
+        <input
+          type="number"
+          value="0"
+          name="reading_time"
+          style="
+            width: 0;
+            height: 0;
+            background-color: inherit;
+            border: none;
+          "
+        />
+        <button
+          formmethod="POST"
+          type="submit"
+          id="updateButton"
+          title="Your article will be updated"
+        >
+          Send
+        </button>
+      </form>
+
+      <form action="/article/deleOneArticle/<%=article._id%>" method="DELETE" id="deleteBlogForm">
+        <button
+          id="delButon"
+          type="submit"
+          formmethod="post"
+          title="delete article"
+        >
+          <img src="../public/delete_icon.svg" alt="delete" id="delIcon" />
+          <figcaption>Delete</figcaption>
+        </button>
+      </form>
+   <% }else{%>
+        <a href="/admin/login">Login</a>
+    <%}%>
+</main>
+  <%- include("partials/footers"); -%>
+</body>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="../public/web.js" defer></script> -->
+    <link rel="stylesheet" href="../public/app.css" />
+    <title>login</title>
+  </head>
+  <body>
+<%- include("partials/headers"); -%>
+<main>
+  <h1><span>Login</span></h1>
+<form action="/admin/login" , method="post">
+  <div id="authContainer">
+    <label for="admin_name"
+      >admin name:</label>
+      <input type="text" , name="admin_name" /> 
+    <br /><br /><br />
+    <label for="password" class="label"
+      >password:</label>
+      <input type="password" , name="password"/>
+  </div>
+
+  <button type="submit">Enter</button>
+</form>  
+
+</main>
+  <%- include("partials/footers"); -%>
+</body>
