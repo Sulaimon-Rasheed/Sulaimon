@@ -35,7 +35,7 @@ app.get("/", (req,res)=>{
         nav: ["Home" , "About", "Project", "Article"],
         name: "Sulaimon Rasheed",
         home: "Home",
-        image:["sulaimon9_image.jpg","sulaimon7_image.jpg", "sulaimon8-teach_image.jpg"]
+        image:["sul_sideLook.jpg","sul_smile.jpg", "sulaimon8-teach_image.jpg"]
     })
 })
 
